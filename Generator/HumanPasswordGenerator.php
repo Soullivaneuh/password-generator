@@ -85,7 +85,9 @@ class HumanPasswordGenerator extends AbstractPasswordGenerator
      * Generate one password based on options
      *
      * @return string password
+     *
      * @throws WordsNotFoundException
+     * @throws ImpossiblePasswordLengthException
      */
     public function generatePassword()
     {
@@ -111,6 +113,14 @@ class HumanPasswordGenerator extends AbstractPasswordGenerator
         return $password;
     }
 
+    /**
+     * @param null|int $minLength
+     * @param null|int $maxLength
+     *
+     * @return string
+     *
+     * @throws NotEnoughWordsException
+     */
     public function randomWord($minLength = null, $maxLength = null)
     {
         if (is_null($minLength)) {
